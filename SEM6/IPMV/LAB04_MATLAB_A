@@ -1,0 +1,53 @@
+# Code
+
+```
+clc
+
+clear ;
+
+close all
+
+b=imread("TIGER2.jfif");
+
+subplot(2,2,1);
+
+imshow(b);
+
+title('original image');
+
+avg=(1/9)*[1 1 1;1 1 1;1 1 1];
+
+blu =convn(double(b),double(avg), 'same');
+
+sharpy = b - uint8(blu);
+
+k= 1;
+
+sh = b+k*sharpy;
+
+subplot(2,2,2);
+
+imshow(sh);
+
+title('Unsharp Mask Filtering');
+
+k=7;
+
+sh1=b+k*sharpy;
+
+subplot(2,2,3);
+
+imshow(sh1);
+
+title('High Boost Filtering');
+
+k= -6;
+
+sh1 = b + k*sharpy;
+
+subplot(2,2,4);
+
+imshow(sh1);
+
+title("De- emphasies");
+```
